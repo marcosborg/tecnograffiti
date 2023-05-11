@@ -1,0 +1,31 @@
+.cookie-notice {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 20px;
+    z-index: 9999;
+}
+
+.cookie-notice .message {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.cookie-notice .button {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.cookie-notice .button:hover {
+    background-color: #3e8e41;
+}
