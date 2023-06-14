@@ -327,4 +327,34 @@ $(() => {
       );
     }
   });
+
+  $('#newsletter').ajaxForm({
+    beforeSubmit: () => {
+      $.LoadingOverlay('show');
+    },
+    success: () => {
+      $.LoadingOverlay('hide');
+      Swal.fire(
+        'Enviado!',
+        'O pedido de newsletter foi registado!',
+        'success'
+      ).then(() => {
+        location.reload();
+      });
+    },
+    error: (error) => {
+      $.LoadingOverlay('hide');
+      let html = '';
+      $.each(error.responseJSON.errors, function (i, v) {
+        $.each(v, function (index, value) {
+          html += value + '<br>';
+        });
+      });
+      Swal.fire(
+        'Erro de validação!',
+        html,
+        'error'
+      );
+    }
+  });
 })

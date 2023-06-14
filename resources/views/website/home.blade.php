@@ -25,7 +25,7 @@
     <link href="/website/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/website/css/cookie-notice.css">
 
-    <link href="/website/css/style.css" rel="stylesheet">
+    <link href="/website/css/style.css?v={{ rand() }}" rel="stylesheet">
 
 </head>
 
@@ -57,9 +57,12 @@
         <div class="container" data-aos="zoom-out" data-aos-delay="100">
             <div class="row">
                 <div class="col-xl-6">
-                    <h1>Tecnologias de remoção de Graffiti</h1>
+                    <h5 style="color: #ffffff;">desde 2001</h5>
+                    <h1>Tecnologias de Remoção de Graffiti</h1>
                     <h2>Remoção de Graffiti e Aplicação Anti-Graffiti</h2>
                     <h2>Tratamento e Reparação de vidros danificados</h2>
+                    <h2>Limpeza de fachadas</h2>
+                    <h2>Serviços de pintura</h2>
                     <a href="#about" class="btn-get-started scrollto">Pedir contacto</a>
                 </div>
             </div>
@@ -175,7 +178,9 @@
                 <hr>
                 <div class="row">
                     <div class="col">
-                        <ul>
+                        <ul style="
+                        text-align: left;
+                    ">
                             <li>C.M. Lisboa</li>
                             <li>C.M. Setúbal</li>
                             <li>C.M. Sintra</li>
@@ -189,7 +194,9 @@
                         </ul>
                     </div>
                     <div class="col">
-                        <ul>
+                        <ul style="
+                        text-align: left;
+                    ">
                             <li>BANCO SANTANDER TOTTA SA</li>
                             <li>NOVO BANCO</li>
                             <li>CAIXA GERAL DE DEPÓSITOS</li>
@@ -696,6 +703,7 @@
                                         <option value="Pinturas">Pinturas</option>
                                         <option value="Polimento Vidros">Polimento Vidros</option>
                                         <option value="Serviços de Manutenção">Serviços de Manutenção</option>
+                                        <option value="Serviços de Manutenção">Serviços de Pintura</option>
                                         <option value="Outros serviços de limpeza">Outros serviços de limpeza</option>
                                     </select>
                                 </div>
@@ -758,7 +766,8 @@
 
                     <div class="col-lg-4 col-md-6 footer-newsletter">
                         <h4>Receba a nossa Newsletter</h4>
-                        <form action="" method="post">
+                        <form action="/forms/newsletter" method="post" id="newsletter">
+                            @csrf
                             <input type="email" name="email"><input type="submit" value="Pedir">
                         </form>
                     </div>

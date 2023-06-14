@@ -44,6 +44,7 @@ class Contact extends Model implements HasMedia
         'Pinturas'                                                    => 'Pinturas',
         'Polimento Vidros'                                            => 'Polimento Vidros',
         'Serviços de Manutenção'                                      => 'Serviços de Manutenção',
+        'Serviços de Pintura'                                         => 'Serviços de Pintura',
         'Outros serviços de limpeza'                                  => 'Outros serviços de limpeza',
     ];
 

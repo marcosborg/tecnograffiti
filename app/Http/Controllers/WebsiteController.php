@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\StoreContactRequest;
 use App\Models\Contact;
+use App\Models\Newsletter;
 use App\Models\User;
 use App\Notifications\ContactForm;
 use Illuminate\Http\Request;
@@ -52,5 +53,17 @@ class WebsiteController extends Controller
         $user = User::find(2);
         $user->notify(new ContactForm($request));
 
+    }
+
+    public function newsletter(Request $request)
+    {
+
+        $request->validate([
+            'email' => 'required|email:rfc,dns'
+        ]);
+
+        $newsletter = new Newsletter;
+        $newsletter->email = $request->email;
+        $newsletter->save();
     }
 }

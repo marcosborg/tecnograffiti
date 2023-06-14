@@ -305,5 +305,21 @@ return [
             'file_helper'       => ' ',
         ],
     ],
+    'newsletter' => [
+        'title'          => 'Newsletter',
+        'title_singular' => 'Newsletter',
+        'fields'         => [
+            'id'                => 'ID',
+            'id_helper'         => ' ',
+            'email'             => 'Email',
+            'email_helper'      => ' ',
+            'created_at'        => 'Created at',
+            'created_at_helper' => ' ',
+            'updated_at'        => 'Updated at',
+            'updated_at_helper' => ' ',
+            'deleted_at'        => 'Deleted at',
+            'deleted_at_helper' => ' ',
+        ],
+    ],
 
 ];

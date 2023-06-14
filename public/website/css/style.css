@@ -2117,3 +2117,10 @@ section {
   color: #fff;
   text-decoration: none;
 }
+
+@media (max-width: 575px) {
+  #header .logo img {
+    max-height: 20px;
+  }
+
+}

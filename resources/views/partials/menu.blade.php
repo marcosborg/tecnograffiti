@@ -145,6 +145,17 @@
                     </a>
                 </li>
             @endcan
+            @can('newsletter_access')
+                <li class="{{ request()->is("admin/newsletters") || request()->is("admin/newsletters/*") ? "active" : "" }}">
+                    <a href="{{ route("admin.newsletters.index") }}">
+                        <i class="fa-fw far fa-newspaper">
+
+                        </i>
+                        <span>{{ trans('cruds.newsletter.title') }}</span>
+
+                    </a>
+                </li>
+            @endcan
             <li class="{{ request()->is("admin/system-calendar") || request()->is("admin/system-calendar/*") ? "active" : "" }}">
                 <a href="{{ route("admin.systemCalendar") }}">
                     <i class="fas fa-fw fa-calendar">

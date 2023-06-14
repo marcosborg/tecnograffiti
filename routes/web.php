@@ -4,6 +4,7 @@ Route::get('/', 'WebsiteController@index');
 
 Route::prefix('forms')->group(function () {
     Route::post('contact', 'WebsiteController@contact');
+    Route::post('newsletter', 'WebsiteController@newsletter');
 });
 
 Route::get('/home', function () {
@@ -61,6 +62,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('contacts/media', 'ContactController@storeMedia')->name('contacts.storeMedia');
     Route::post('contacts/ckmedia', 'ContactController@storeCKEditorImages')->name('contacts.storeCKEditorImages');
     Route::resource('contacts', 'ContactController');
+
+    // Newsletter
+    Route::delete('newsletters/destroy', 'NewsletterController@massDestroy')->name('newsletters.massDestroy');
+    Route::resource('newsletters', 'NewsletterController');
 
     Route::get('system-calendar', 'SystemCalendarController@index')->name('systemCalendar');
     Route::get('messenger', 'MessengerController@index')->name('messenger.index');
