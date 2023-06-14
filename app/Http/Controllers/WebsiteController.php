@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\StoreContactRequest;
 use App\Models\Contact;
+use App\Models\User;
+use App\Notifications\ContactForm;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
@@ -18,6 +20,7 @@ class WebsiteController extends Controller
 
     public function contact(StoreContactRequest $request)
     {
+
         if ($request->file) {
             $path = storage_path('tmp/uploads');
 
@@ -46,7 +49,8 @@ class WebsiteController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $contact->id]);
         }
 
-        return redirect()->route('admin.contacts.index');
+        $user = User::find(2);
+        $user->notify(new ContactForm($request));
 
     }
 }

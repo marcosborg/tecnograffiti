@@ -288,7 +288,7 @@
                                         </ul>
                                     </div>
                                     <div class="col-md-6">
-                                        <h5>Natureza dos graffitis:</h5>
+                                        <h5>Natureza dos graffiti:</h5>
                                         <ul>
                                             <li><i class="ri-check-double-line"></i> Graffiti spray</li>
                                             <li><i class="ri-check-double-line"></i> Graffiti marcador
@@ -346,7 +346,7 @@
                                     amarelecimento das superfícies a médio longo prazo. É de base aquosa, feita com
                                     micro ceras que ajudam
                                     a superfície a “respirar”.
-                                    A aplicação da proteção anti graffiti, é eficaz contra o ataque dos graffitis
+                                    A aplicação da proteção anti graffiti, é eficaz contra o ataque dos graffiti
                                     (protegendo a superfície
                                     do efeito sombra), é hidrofugante, repele a água (retardando o aparecimento de
                                     verdetes e humidades) e
@@ -421,7 +421,7 @@
                                 <ul>
                                     <li><i class="ri-check-double-line"></i> Manutenção de Fachadas Exteriores;</li>
                                     <li><i class="ri-check-double-line"></i> Manutenção de Prestação de Serviços de
-                                        Remoção de Graffitis e
+                                        Remoção de Graffiti e
                                         Anti-Graffiti;</li>
                                     <li><i class="ri-check-double-line"></i> Manutenção Painéis Solares;</li>
                                 </ul>
@@ -438,7 +438,7 @@
                                     para o efeito. Agora já não precisa de substituir o seu vidro, nós reparamos:
                                 </p>
                                 <ul>
-                                    <li><i class="ri-check-double-line"></i> Graffitis feitos com ácido</li>
+                                    <li><i class="ri-check-double-line"></i> Graffiti feitos com ácido</li>
                                     <li><i class="ri-check-double-line"></i> Riscado por objetos cortantes
                                     </li>
                                     <li><i class="ri-check-double-line"></i> Com calcário</li>
@@ -486,7 +486,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-                            <h4>GRG STRONG™<br><small>Removedor de Graffitis para superfícies porosas</small></h4>
+                            <h4>GRG STRONG™<br><small>Removedor de Graffiti para superfícies porosas</small></h4>
                             <p>Removedor de graffiti para superfícies porosas, como por exemplo: granito, mármore,
                                 tijoleira,
                                 moleanos, pode ser utilizado em outras superfícies duras como, em madeira tratada,
@@ -497,12 +497,12 @@
                     </div>
                     <div class="col-md-6 mt-4 mt-md-0">
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-                            <h4>GRL PRESS™<br><small>Removedor de Graffitis para superfícies duras e sensíveis, não
+                            <h4>GRL PRESS™<br><small>Removedor de Graffiti para superfícies duras e sensíveis, não
                                     porosas –
                                     biodegradável</small></h4>
-                            <p>É um removedor de tinta e graffitis, para superfícies não porosas, sensíveis e difíceis.
+                            <p>É um removedor de tinta e graffiti, para superfícies não porosas, sensíveis e difíceis.
                                 Usar para
-                                remover graffitis no interior e exterior de superfícies mais sensíveis e também para
+                                remover graffiti no interior e exterior de superfícies mais sensíveis e também para
                                 remoção da gama
                                 proteção – Pro.</p>
                             <p>Usado para remover marcadores, spray, etc., em acrílico, sinais de trânsito e outros
@@ -513,9 +513,9 @@
                     <div class="col-md-6 mt-4 mt-md-0">
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
                             <h4>GR SHADOWS™<br><small>Removedor de Graffiti – biodegradável</small></h4>
-                            <p>É um forte removedor de graffitis e sombras, para superfícies porosas (interior e
+                            <p>É um forte removedor de graffiti e sombras, para superfícies porosas (interior e
                                 exterior). Nas
-                                sombras existentes, aplique este produto apenas após terem sidos removidos os graffitis
+                                sombras existentes, aplique este produto apenas após terem sidos removidos os graffiti
                                 pelo processo
                                 normal de remoção.</p>
                             <p>Em casos especiais pode remover a tinta da superfície. Esta composição é para ser usada
@@ -529,7 +529,7 @@
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
                             <h4>GRL LACSIN™<br><small>Removedor forte para superfícies não porosas –
                                     biodegradável</small></h4>
-                            <p>É um forte removedor de Graffitis (marcador, spray, tinta) para superfícies não porosas,
+                            <p>É um forte removedor de Graffiti (marcador, spray, tinta) para superfícies não porosas,
                                 designamente
                                 lacados, acrílicos, plásticos, aço inox, alumínios e outros tipo de metais.</p>
                             <p>A sua aplicação estende-se a sinais de trânsito, outra sinalética vertical, barreiras
@@ -542,13 +542,13 @@
                             <h4>PRO SP™<br><small>Protetor Anti-Graffiti para superfícies porosas –
                                     biodegradável</small></h4>
                             <p>O Pro SP é um protetor hidrofugante de base aquosa, reversível e invisível.</p>
-                            <p>É eficaz contra o ataque dos graffitis, protege dos raios UV, da poluição atmosférica,
+                            <p>É eficaz contra o ataque dos graffiti, protege dos raios UV, da poluição atmosférica,
                                 deixa a
                                 superfície respirar e retarda o aparecimento de verdetes e humidades, no mínimo de 5
                                 anos.</p>
                             <p>Aplica-se em todos os tipos de superfícies porosas, tais como pedra, cimento, madeira,
                                 entre outros,
-                                que estejam vandalizadas com graffitis, como por exemplo em monumentos, fachadas de
+                                que estejam vandalizadas com graffiti, como por exemplo em monumentos, fachadas de
                                 edíficios e outras
                                 obras arquitetónicas.</p>
                         </div>
@@ -558,10 +558,10 @@
                             <h4>PRO SNP™<br><small>Protetor Anti-Graffiti biodegradável para superfícies não
                                     porosas</small></h4>
                             <p>Tem base aquosa, protege as superfícies não porosas a longo prazo.</p>
-                            <p>Protege contra o ataque dos graffitis feitos por tinta ou marcadores, eficaz contra a
+                            <p>Protege contra o ataque dos graffiti feitos por tinta ou marcadores, eficaz contra a
                                 poluição
                                 atmosférica e humidade no mínimo de 5 anos.</p>
-                            <p>Aplica-se a superfícies não porosas, que estejam vandalizadas com graffitis, como por
+                            <p>Aplica-se a superfícies não porosas, que estejam vandalizadas com graffiti, como por
                                 exemplo em sinais
                                 de trânsito, barreiras metálicas, eco pontos, e outro tipo de superfícies não porosas.
                             </p>
@@ -744,13 +744,16 @@
                             <li><i class="bx bx-chevron-right"></i> <a href="#services">Serviços</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="#tabs">Produtos</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="#contact">Contactos</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#" data-bs-toggle="modal"
-                                    data-bs-target="#privacy">Política de privacidade</a></li>
                         </ul>
                     </div>
 
                     <div class="col-lg-3 col-md-6 footer-links">
-
+                        <h4>&nbsp;</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#" data-bs-toggle="modal"
+                                    data-bs-target="#privacy">Política de privacidade</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="/admin">Administração</a></li>
+                        </ul>
                     </div>
 
                     <div class="col-lg-4 col-md-6 footer-newsletter">
@@ -862,6 +865,7 @@
 
     <!-- Vendor JS Files -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://malsup.github.io/jquery.form.js"></script>
     <script src="/website/vendor/purecounter/purecounter_vanilla.js"></script>
     <script src="/website/vendor/aos/aos.js"></script>
     <script src="/website/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -869,9 +873,13 @@
     <script src="/website/vendor/isotope-layout/isotope.pkgd.min.js"></script>
     <script src="/website/vendor/swiper/swiper-bundle.min.js"></script>
     <script src="/website/js/cookie-notice.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
     <!-- Template Main JS File -->
-    <script src="/website/js/main.js"></script>
+    <script src="/website/js/main.js?v={{ rand() }}"></script>
 
 </body>
 

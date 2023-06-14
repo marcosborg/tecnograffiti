@@ -108,7 +108,7 @@
 					<h3>Trabalhos a executar</h3>
 					<ul>
 						@if ($work_data_1)
-						<li>Remoção de Graffitis</li>
+						<li>Remoção de Graffiti</li>
 						<ul>
 							@if ($work_data_1_1)
 							<li>Superfícies (Pedra, azulejo, parede)</li>
