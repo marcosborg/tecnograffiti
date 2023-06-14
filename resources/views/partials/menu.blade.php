@@ -167,6 +167,17 @@
                     </a>
                 </li>
             @endcan
+            @can('recruitment_access')
+                <li class="{{ request()->is("admin/recruitments") || request()->is("admin/recruitments/*") ? "active" : "" }}">
+                    <a href="{{ route("admin.recruitments.index") }}">
+                        <i class="fa-fw fas fa-users">
+
+                        </i>
+                        <span>{{ trans('cruds.recruitment.title') }}</span>
+
+                    </a>
+                </li>
+            @endcan
             <li class="{{ request()->is("admin/system-calendar") || request()->is("admin/system-calendar/*") ? "active" : "" }}">
                 <a href="{{ route("admin.systemCalendar") }}">
                     <i class="fas fa-fw fa-calendar">

@@ -75,6 +75,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('datasheets/ckmedia', 'DatasheetController@storeCKEditorImages')->name('datasheets.storeCKEditorImages');
     Route::resource('datasheets', 'DatasheetController');
 
+    // Recruitment
+    Route::delete('recruitments/destroy', 'RecruitmentController@massDestroy')->name('recruitments.massDestroy');
+    Route::post('recruitments/media', 'RecruitmentController@storeMedia')->name('recruitments.storeMedia');
+    Route::post('recruitments/ckmedia', 'RecruitmentController@storeCKEditorImages')->name('recruitments.storeCKEditorImages');
+    Route::resource('recruitments', 'RecruitmentController');
+
     Route::get('system-calendar', 'SystemCalendarController@index')->name('systemCalendar');
     Route::get('messenger', 'MessengerController@index')->name('messenger.index');
     Route::get('messenger/create', 'MessengerController@createTopic')->name('messenger.createTopic');

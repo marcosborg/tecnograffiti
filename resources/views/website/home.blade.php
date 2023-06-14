@@ -723,6 +723,75 @@
             </div>
         </section><!-- End Contact Section -->
 
+        <!-- ======= Recruitment Section ======= -->
+        <section id="recruitment" class="contact">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>Recrutamento</h2>
+                    <p>Envie-nos o seu curriculum!<br><small>Utilize o seguinte formulário.</small></p>
+                </div>
+
+                <div class="row" data-aos="fade-up" data-aos-delay="100">
+
+                    <div class="col-lg-6">
+
+                        <img src="/website/assets/img/recruitment.png" alt="Recrutamento Tecnograffiti" class="img-fluid">
+
+                    </div>
+
+                    <div class="col-lg-6">
+                        <form action="/forms/contact" method="post" enctype="multipart/form-data" role="form"
+                            class="php-email-form">
+                            @csrf
+                            <div class="row">
+                                <div class="col form-group">
+                                    <input type="text" name="name" class="form-control" placeholder="Nome">
+                                </div>
+                                <div class="col form-group">
+                                    <input type="email" class="form-control" name="email" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col form-group">
+                                    <input type="text" placeholder="Contacto telefónico" class="form-control"
+                                        name="phone">
+                                </div>
+                                <div class="col form-group">
+                                    <input type="text" placeholder="Morada" class="form-control" name="address">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col form-group">
+                                    <select class="form-control" name="type">
+                                        <option selected disabled>Tipo de prestação de serviço</option>
+                                        <option value="Remoção Graffiti">Remoção Graffiti</option>
+                                        <option value="Aplicação Anti-Graffiti - Limpeza e Conservação de Fachadas">
+                                            Aplicação Anti-Graffiti
+                                            - Limpeza e Conservação de Fachadas</option>
+                                        <option value="Pinturas">Pinturas</option>
+                                        <option value="Polimento Vidros">Polimento Vidros</option>
+                                        <option value="Serviços de Manutenção">Serviços de Manutenção</option>
+                                        <option value="Serviços de Manutenção">Serviços de Pintura</option>
+                                        <option value="Outros serviços de limpeza">Outros serviços de limpeza</option>
+                                    </select>
+                                </div>
+                                <div class="col form-group">
+                                    <input type="text" placeholder="Assunto" class="form-control" name="subject">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="file" class="form-control" name="file">
+                            </div>
+                            <button type="submit">Enviar</button>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </section><!-- End Contact Section -->
+
     </main><!-- End #main -->
 
     <!-- ======= Footer ======= -->
