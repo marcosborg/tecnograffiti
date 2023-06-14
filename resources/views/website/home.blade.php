@@ -755,14 +755,10 @@
                                 <textarea placeholder="Breve descrição" class="form-control"
                                     name="description"></textarea>
                             </div>
-                            <div class="form-group {{ $errors->has('cv') ? 'has-error' : '' }}">
+                            <div class="form-group">
                                 <label for="cv">{{ trans('cruds.recruitment.fields.cv') }}</label>
                                 <div class="needsclick dropzone" id="cv-dropzone">
                                 </div>
-                                @if($errors->has('cv'))
-                                <span class="help-block" role="alert">{{ $errors->first('cv') }}</span>
-                                @endif
-                                <span class="help-block">{{ trans('cruds.recruitment.fields.cv_helper') }}</span>
                             </div>
                             <button type="submit">Enviar</button>
                         </form>
@@ -940,7 +936,7 @@
 
             <script>
                 Dropzone.options.cvDropzone = {
-                    url: '{{ route('admin.recruitments.storeMedia') }}',
+                    url: '{{ route('forms.recruitments.storeMedia') }}',
                     maxFilesize: 5, // MB
                     maxFiles: 1,
                     addRemoveLinks: true,

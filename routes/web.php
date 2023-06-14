@@ -6,6 +6,7 @@ Route::prefix('forms')->group(function () {
     Route::post('contact', 'WebsiteController@contact');
     Route::post('newsletter', 'WebsiteController@newsletter');
     Route::post('recruitment', 'WebsiteController@recruitment');
+    Route::post('recruitments/media', 'RecruitmentController@storeMedia')->name('forms.recruitments.storeMedia');
 });
 
 Route::get('/home', function () {

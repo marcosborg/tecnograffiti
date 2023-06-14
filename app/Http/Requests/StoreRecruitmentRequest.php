@@ -11,7 +11,7 @@ class StoreRecruitmentRequest extends FormRequest
 {
     public function authorize()
     {
-        return Gate::allows('recruitment_create');
+        return true;
     }
 
     public function rules()
