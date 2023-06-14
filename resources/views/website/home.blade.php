@@ -24,6 +24,7 @@
     <link href="/website/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="/website/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/website/css/cookie-notice.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
 
     <link href="/website/css/style.css?v={{ rand() }}" rel="stylesheet">
 
@@ -735,60 +736,38 @@
                 <div class="row" data-aos="fade-up" data-aos-delay="100">
 
                     <div class="col-lg-6">
-
-                        <img src="/website/assets/img/recruitment.png" alt="Recrutamento Tecnograffiti" class="img-fluid">
-
+                        <img src="/website/img/recruitment.png" alt="Recrutamento Tecnograffiti" class="img-fluid">
                     </div>
-
                     <div class="col-lg-6">
-                        <form action="/forms/contact" method="post" enctype="multipart/form-data" role="form"
+                        <form action="/forms/recruitment" method="post" enctype="multipart/form-data" role="form"
                             class="php-email-form">
                             @csrf
-                            <div class="row">
-                                <div class="col form-group">
-                                    <input type="text" name="name" class="form-control" placeholder="Nome">
-                                </div>
-                                <div class="col form-group">
-                                    <input type="email" class="form-control" name="email" placeholder="Email">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col form-group">
-                                    <input type="text" placeholder="Contacto telefónico" class="form-control"
-                                        name="phone">
-                                </div>
-                                <div class="col form-group">
-                                    <input type="text" placeholder="Morada" class="form-control" name="address">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col form-group">
-                                    <select class="form-control" name="type">
-                                        <option selected disabled>Tipo de prestação de serviço</option>
-                                        <option value="Remoção Graffiti">Remoção Graffiti</option>
-                                        <option value="Aplicação Anti-Graffiti - Limpeza e Conservação de Fachadas">
-                                            Aplicação Anti-Graffiti
-                                            - Limpeza e Conservação de Fachadas</option>
-                                        <option value="Pinturas">Pinturas</option>
-                                        <option value="Polimento Vidros">Polimento Vidros</option>
-                                        <option value="Serviços de Manutenção">Serviços de Manutenção</option>
-                                        <option value="Serviços de Manutenção">Serviços de Pintura</option>
-                                        <option value="Outros serviços de limpeza">Outros serviços de limpeza</option>
-                                    </select>
-                                </div>
-                                <div class="col form-group">
-                                    <input type="text" placeholder="Assunto" class="form-control" name="subject">
-                                </div>
+                            <div class="form-group">
+                                <input type="text" name="name" class="form-control" placeholder="Nome">
                             </div>
                             <div class="form-group">
-                                <input type="file" class="form-control" name="file">
+                                <input type="email" class="form-control" name="email" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" placeholder="Telefone" class="form-control" name="phone">
+                            </div>
+                            <div class="form-group">
+                                <textarea placeholder="Breve descrição" class="form-control"
+                                    name="description"></textarea>
+                            </div>
+                            <div class="form-group {{ $errors->has('cv') ? 'has-error' : '' }}">
+                                <label for="cv">{{ trans('cruds.recruitment.fields.cv') }}</label>
+                                <div class="needsclick dropzone" id="cv-dropzone">
+                                </div>
+                                @if($errors->has('cv'))
+                                <span class="help-block" role="alert">{{ $errors->first('cv') }}</span>
+                                @endif
+                                <span class="help-block">{{ trans('cruds.recruitment.fields.cv_helper') }}</span>
                             </div>
                             <button type="submit">Enviar</button>
                         </form>
                     </div>
-
                 </div>
-
             </div>
         </section><!-- End Contact Section -->
 
@@ -954,10 +933,60 @@
     <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
 
     <!-- Template Main JS File -->
     <script src="/website/js/main.js?v={{ rand() }}"></script>
+
+            <script>
+                Dropzone.options.cvDropzone = {
+                    url: '{{ route('admin.recruitments.storeMedia') }}',
+                    maxFilesize: 5, // MB
+                    maxFiles: 1,
+                    addRemoveLinks: true,
+                        headers: {
+                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                        },
+                    params: {
+                        size: 5
+                    },
+                    success: function (file, response) {
+                        $('form').find('input[name="cv"]').remove()
+                        $('form').append('<input type="hidden" name="cv" value="' + response.name + '">')
+                    },
+                    removedfile: function (file) {
+                        file.previewElement.remove()
+                        if (file.status !== 'error') {
+                            $('form').find('input[name="cv"]').remove()
+                            this.options.maxFiles = this.options.maxFiles + 1
+                        }
+                    },
+                    init: function () {
+                        @if(isset($recruitment) && $recruitment->cv)
+                            var file = {!! json_encode($recruitment->cv) !!}
+                            this.options.addedfile.call(this, file)
+                            file.previewElement.classList.add('dz-complete')
+                            $('form').append('<input type="hidden" name="cv" value="' + file.file_name + '">')
+                            this.options.maxFiles = this.options.maxFiles - 1
+                        @endif
+                    },
+                    error: function (file, response) {
+                        if ($.type(response) === 'string') {
+                            var message = response //dropzone sends it's own error messages in string
+                        } else {
+                            var message = response.errors.file
+                        }
+                        file.previewElement.classList.add('dz-error')
+                        _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
+                        _results = []
+                        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+                            node = _ref[_i]
+                            _results.push(node.textContent = message)
+                        }
+                        return _results
+                    }
+                }
+            </script>
 
 </body>
 

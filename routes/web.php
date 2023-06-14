@@ -5,6 +5,7 @@ Route::get('/', 'WebsiteController@index');
 Route::prefix('forms')->group(function () {
     Route::post('contact', 'WebsiteController@contact');
     Route::post('newsletter', 'WebsiteController@newsletter');
+    Route::post('recruitment', 'WebsiteController@recruitment');
 });
 
 Route::get('/home', function () {

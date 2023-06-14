@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\StoreContactRequest;
+use App\Http\Requests\StoreRecruitmentRequest;
 use App\Models\Contact;
 use App\Models\Newsletter;
+use App\Models\Recruitment;
 use App\Models\User;
 use App\Notifications\ContactForm;
 use Illuminate\Http\Request;
@@ -13,6 +15,8 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class WebsiteController extends Controller
 {
+
+    use MediaUploadingTrait;
 
     public function index()
     {
@@ -65,5 +69,18 @@ class WebsiteController extends Controller
         $newsletter = new Newsletter;
         $newsletter->email = $request->email;
         $newsletter->save();
+    }
+
+    public function recruitment(StoreRecruitmentRequest $request)
+    {
+        $recruitment = Recruitment::create($request->all());
+
+        if ($request->input('cv', false)) {
+            $recruitment->addMedia(storage_path('tmp/uploads/' . basename($request->input('cv'))))->toMediaCollection('cv');
+        }
+
+        if ($media = $request->input('ck-media', false)) {
+            Media::whereIn('id', $media)->update(['model_id' => $recruitment->id]);
+        }
     }
 }
