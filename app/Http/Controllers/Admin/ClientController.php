@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\CsvImportTrait;
 use App\Http\Requests\MassDestroyClientRequest;
 use App\Http\Requests\StoreClientRequest;
 use App\Http\Requests\UpdateClientRequest;
@@ -15,30 +16,32 @@ use Yajra\DataTables\Facades\DataTables;
 
 class ClientController extends Controller
 {
+    use CsvImportTrait;
+
     public function index(Request $request)
     {
         abort_if(Gate::denies('client_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Client::with(['client_type'])->select(sprintf('%s.*', (new Client())->table));
+            $query = Client::with(['client_type'])->select(sprintf('%s.*', (new Client)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
             $table->addColumn('actions', '&nbsp;');
 
             $table->editColumn('actions', function ($row) {
-                $viewGate = 'client_show';
-                $editGate = 'client_edit';
-                $deleteGate = 'client_delete';
+                $viewGate      = 'client_show';
+                $editGate      = 'client_edit';
+                $deleteGate    = 'client_delete';
                 $crudRoutePart = 'clients';
 
                 return view('partials.datatablesActions', compact(
-                'viewGate',
-                'editGate',
-                'deleteGate',
-                'crudRoutePart',
-                'row'
-            ));
+                    'viewGate',
+                    'editGate',
+                    'deleteGate',
+                    'crudRoutePart',
+                    'row'
+                ));
             });
 
             $table->editColumn('id', function ($row) {
@@ -150,7 +153,11 @@ class ClientController extends Controller
 
     public function massDestroy(MassDestroyClientRequest $request)
     {
-        Client::whereIn('id', request('ids'))->delete();
+        $clients = Client::find(request('ids'));
+
+        foreach ($clients as $client) {
+            $client->delete();
+        }
 
         return response(null, Response::HTTP_NO_CONTENT);
     }

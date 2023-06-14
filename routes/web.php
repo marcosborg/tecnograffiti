@@ -32,6 +32,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Client
     Route::delete('clients/destroy', 'ClientController@massDestroy')->name('clients.massDestroy');
+    Route::post('clients/parse-csv-import', 'ClientController@parseCsvImport')->name('clients.parseCsvImport');
+    Route::post('clients/process-csv-import', 'ClientController@processCsvImport')->name('clients.processCsvImport');
     Route::resource('clients', 'ClientController');
 
     // Urgency
@@ -66,6 +68,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Newsletter
     Route::delete('newsletters/destroy', 'NewsletterController@massDestroy')->name('newsletters.massDestroy');
     Route::resource('newsletters', 'NewsletterController');
+
+    // Datasheet
+    Route::delete('datasheets/destroy', 'DatasheetController@massDestroy')->name('datasheets.massDestroy');
+    Route::post('datasheets/media', 'DatasheetController@storeMedia')->name('datasheets.storeMedia');
+    Route::post('datasheets/ckmedia', 'DatasheetController@storeCKEditorImages')->name('datasheets.storeCKEditorImages');
+    Route::resource('datasheets', 'DatasheetController');
 
     Route::get('system-calendar', 'SystemCalendarController@index')->name('systemCalendar');
     Route::get('messenger', 'MessengerController@index')->name('messenger.index');

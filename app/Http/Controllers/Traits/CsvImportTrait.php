@@ -13,7 +13,7 @@ trait CsvImportTrait
     {
         try {
             $filename = $request->input('filename', false);
-            $path     = storage_path('app/csv_import/' . $filename);
+            $path = storage_path('app/csv_import/' . $filename);
 
             $hasHeader = $request->input('hasHeader', false);
 
@@ -21,7 +21,7 @@ trait CsvImportTrait
             $fields = array_flip(array_filter($fields));
 
             $modelName = $request->input('modelName', false);
-            $model     = 'App\\Models\\' . $modelName;
+            $model = 'App\\Models\\' . $modelName;
 
             $reader = new SpreadsheetReader($path);
             $insert = [];
@@ -39,6 +39,17 @@ trait CsvImportTrait
                 }
 
                 if (count($tmp) > 0) {
+                    $id = isset($tmp['id']) ? $tmp['id'] : null;
+                    unset($tmp['id']); // Remove o ID dos dados a serem inseridos/atualizados
+
+                    if ($id) {
+                        $existingModel = $model::find($id);
+                        if ($existingModel) {
+                            $existingModel->update($tmp); // Atualiza o registro existente com os novos dados
+                            continue;
+                        }
+                    }
+
                     $insert[] = $tmp;
                 }
             }
@@ -49,7 +60,7 @@ trait CsvImportTrait
                 $model::insert($insert_item);
             }
 
-            $rows  = count($insert);
+            $rows = count($insert);
             $table = Str::plural($modelName);
 
             File::delete($path);
@@ -62,6 +73,7 @@ trait CsvImportTrait
         }
     }
 
+
     public function parseCsvImport(Request $request)
     {
         $file = $request->file('csv_file');
@@ -69,12 +81,12 @@ trait CsvImportTrait
             'csv_file' => 'mimes:csv,txt',
         ]);
 
-        $path      = $file->path();
+        $path = $file->path();
         $hasHeader = $request->input('header', false) ? true : false;
 
-        $reader  = new SpreadsheetReader($path);
+        $reader = new SpreadsheetReader($path);
         $headers = $reader->current();
-        $lines   = [];
+        $lines = [];
 
         $i = 0;
         while ($reader->next() !== false && $i < 5) {
@@ -85,10 +97,10 @@ trait CsvImportTrait
         $filename = Str::random(10) . '.csv';
         $file->storeAs('csv_import', $filename);
 
-        $modelName     = $request->input('model', false);
+        $modelName = $request->input('model', false);
         $fullModelName = 'App\\Models\\' . $modelName;
 
-        $model     = new $fullModelName();
+        $model = new $fullModelName();
         $fillables = $model->getFillable();
 
         $redirect = url()->previous();

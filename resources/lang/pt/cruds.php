@@ -321,5 +321,25 @@ return [
             'deleted_at_helper' => ' ',
         ],
     ],
+    'datasheet' => [
+        'title'          => 'Fichas técnicas',
+        'title_singular' => 'Fichas técnica',
+        'fields'         => [
+            'id'                 => 'ID',
+            'id_helper'          => ' ',
+            'name'               => 'Nome do documento',
+            'name_helper'        => ' ',
+            'description'        => 'Descrição',
+            'description_helper' => ' ',
+            'files'              => 'Ficheiros',
+            'files_helper'       => ' ',
+            'created_at'         => 'Created at',
+            'created_at_helper'  => ' ',
+            'updated_at'         => 'Updated at',
+            'updated_at_helper'  => ' ',
+            'deleted_at'         => 'Deleted at',
+            'deleted_at_helper'  => ' ',
+        ],
+    ],
 
 ];

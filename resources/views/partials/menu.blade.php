@@ -156,6 +156,17 @@
                     </a>
                 </li>
             @endcan
+            @can('datasheet_access')
+                <li class="{{ request()->is("admin/datasheets") || request()->is("admin/datasheets/*") ? "active" : "" }}">
+                    <a href="{{ route("admin.datasheets.index") }}">
+                        <i class="fa-fw fas fa-file">
+
+                        </i>
+                        <span>{{ trans('cruds.datasheet.title') }}</span>
+
+                    </a>
+                </li>
+            @endcan
             <li class="{{ request()->is("admin/system-calendar") || request()->is("admin/system-calendar/*") ? "active" : "" }}">
                 <a href="{{ route("admin.systemCalendar") }}">
                     <i class="fas fa-fw fa-calendar">

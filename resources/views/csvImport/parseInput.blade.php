@@ -35,16 +35,20 @@
                             @endforeach
                         @endif
                         <tr>
-                            @foreach($headers as $key => $header)
-                                <td>
-                                    <select name="fields[{{ $key }}]">
-                                        <option value=''>Please select</option>
-                                        @foreach($fillables as $k => $fillable)
-                                            <option value="{{ $fillable }}" {{ strtolower($header) === strtolower($fillable) ? 'selected' : '' }}>{{ $fillable }}</option>
-                                        @endforeach
-                                    </select>
-                                </td>
-                            @endforeach
+                            <tr>
+                                @foreach($headers as $key => $header)
+                                    <td>
+                                        <select name="fields[{{ $key }}]">
+                                            <option value=''>Please select</option>
+                                            @foreach($fillables as $k => $fillable)
+                                                <option value="{{ $fillable }}" {{ strtolower($header) === strtolower($fillable) ? 'selected' : '' }}>{{ $fillable }}</option>
+                                            @endforeach
+                                            <option value="id" {{ strtolower($header) === 'id' ? 'selected' : '' }}>ID</option> <!-- Adiciona a opção ID -->
+                                        </select>
+                                    </td>
+                                @endforeach
+                            </tr>
+                            
                         </tr>
                     </table>
 
