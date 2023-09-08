@@ -19,25 +19,25 @@ class InfoController extends Controller
         abort_if(Gate::denies('info_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Info::query()->select(sprintf('%s.*', (new Info())->table));
+            $query = Info::query()->select(sprintf('%s.*', (new Info)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
             $table->addColumn('actions', '&nbsp;');
 
             $table->editColumn('actions', function ($row) {
-                $viewGate = 'info_show';
-                $editGate = 'info_edit';
-                $deleteGate = 'info_delete';
+                $viewGate      = 'info_show';
+                $editGate      = 'info_edit';
+                $deleteGate    = 'info_delete';
                 $crudRoutePart = 'infos';
 
                 return view('partials.datatablesActions', compact(
-                'viewGate',
-                'editGate',
-                'deleteGate',
-                'crudRoutePart',
-                'row'
-            ));
+                    'viewGate',
+                    'editGate',
+                    'deleteGate',
+                    'crudRoutePart',
+                    'row'
+                ));
             });
 
             $table->editColumn('id', function ($row) {
@@ -101,7 +101,11 @@ class InfoController extends Controller
 
     public function massDestroy(MassDestroyInfoRequest $request)
     {
-        Info::whereIn('id', request('ids'))->delete();
+        $infos = Info::find(request('ids'));
+
+        foreach ($infos as $info) {
+            $info->delete();
+        }
 
         return response(null, Response::HTTP_NO_CONTENT);
     }

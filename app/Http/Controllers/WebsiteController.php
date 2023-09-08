@@ -54,7 +54,7 @@ class WebsiteController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $contact->id]);
         }
 
-        $user = User::find(2);
+        $user = User::find(6);
         $user->notify(new ContactForm($request));
 
     }

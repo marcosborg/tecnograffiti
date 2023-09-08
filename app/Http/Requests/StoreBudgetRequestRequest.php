@@ -33,57 +33,28 @@ class StoreBudgetRequestRequest extends FormRequest
                 'date_format:' . config('panel.date_format'),
                 'nullable',
             ],
-            'request_mode' => [
-                'string',
-                'nullable',
-            ],
             'sent_date' => [
                 'date_format:' . config('panel.date_format'),
-                'nullable',
-            ],
-            'sent_mode' => [
-                'string',
-                'nullable',
-            ],
-            'deadline_date' => [
-                'date_format:' . config('panel.date_format'),
-                'nullable',
-            ],
-            'deadline_mode' => [
-                'string',
                 'nullable',
             ],
             'adjudicated_date' => [
                 'date_format:' . config('panel.date_format'),
                 'nullable',
             ],
-            'adjudicated_mode' => [
-                'string',
-                'nullable',
-            ],
             'concluded_date' => [
                 'date_format:' . config('panel.date_format'),
-                'nullable',
-            ],
-            'concluded_mode' => [
-                'string',
                 'nullable',
             ],
             'invoice_date' => [
                 'date_format:' . config('panel.date_format'),
                 'nullable',
             ],
-            'invoice_mode' => [
-                'string',
-                'nullable',
-            ],
             'survey_date' => [
                 'date_format:' . config('panel.date_format'),
                 'nullable',
             ],
-            'survey_mode' => [
-                'string',
-                'nullable',
+            'photos' => [
+                'array',
             ],
             'address' => [
                 'string',

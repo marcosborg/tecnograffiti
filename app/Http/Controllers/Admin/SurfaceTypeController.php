@@ -19,25 +19,25 @@ class SurfaceTypeController extends Controller
         abort_if(Gate::denies('surface_type_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = SurfaceType::query()->select(sprintf('%s.*', (new SurfaceType())->table));
+            $query = SurfaceType::query()->select(sprintf('%s.*', (new SurfaceType)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
             $table->addColumn('actions', '&nbsp;');
 
             $table->editColumn('actions', function ($row) {
-                $viewGate = 'surface_type_show';
-                $editGate = 'surface_type_edit';
-                $deleteGate = 'surface_type_delete';
+                $viewGate      = 'surface_type_show';
+                $editGate      = 'surface_type_edit';
+                $deleteGate    = 'surface_type_delete';
                 $crudRoutePart = 'surface-types';
 
                 return view('partials.datatablesActions', compact(
-                'viewGate',
-                'editGate',
-                'deleteGate',
-                'crudRoutePart',
-                'row'
-            ));
+                    'viewGate',
+                    'editGate',
+                    'deleteGate',
+                    'crudRoutePart',
+                    'row'
+                ));
             });
 
             $table->editColumn('id', function ($row) {

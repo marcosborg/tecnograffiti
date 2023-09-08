@@ -51,7 +51,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('budget-requests/media', 'BudgetRequestController@storeMedia')->name('budget-requests.storeMedia');
     Route::post('budget-requests/ckmedia', 'BudgetRequestController@storeCKEditorImages')->name('budget-requests.storeCKEditorImages');
     Route::resource('budget-requests', 'BudgetRequestController');
-    Route::get('budget-requests/pdf/{id}', 'BudgetRequestController@pdf')->name('budget-requests.pdf');
 
     // Client Type
     Route::delete('client-types/destroy', 'ClientTypeController@massDestroy')->name('client-types.massDestroy');
@@ -82,6 +81,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('recruitments/media', 'RecruitmentController@storeMedia')->name('recruitments.storeMedia');
     Route::post('recruitments/ckmedia', 'RecruitmentController@storeCKEditorImages')->name('recruitments.storeCKEditorImages');
     Route::resource('recruitments', 'RecruitmentController');
+
+    // Reception Modes
+    Route::delete('reception-modes/destroy', 'ReceptionModesController@massDestroy')->name('reception-modes.massDestroy');
+    Route::resource('reception-modes', 'ReceptionModesController');
 
     Route::get('system-calendar', 'SystemCalendarController@index')->name('systemCalendar');
     Route::get('messenger', 'MessengerController@index')->name('messenger.index');

@@ -109,6 +109,17 @@
                                 </a>
                             </li>
                         @endcan
+                        @can('reception_mode_access')
+                            <li class="{{ request()->is("admin/reception-modes") || request()->is("admin/reception-modes/*") ? "active" : "" }}">
+                                <a href="{{ route("admin.reception-modes.index") }}">
+                                    <i class="fa-fw fas fa-inbox">
+
+                                    </i>
+                                    <span>{{ trans('cruds.receptionMode.title') }}</span>
+
+                                </a>
+                            </li>
+                        @endcan
                     </ul>
                 </li>
             @endcan

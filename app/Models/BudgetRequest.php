@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use \DateTimeInterface;
 use Carbon\Carbon;
+use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -13,16 +13,17 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class BudgetRequest extends Model implements HasMedia
 {
-    use SoftDeletes;
-    use InteractsWithMedia;
-    use HasFactory;
+    use SoftDeletes, InteractsWithMedia, HasFactory;
 
     public $table = 'budget_requests';
+
+    protected $appends = [
+        'photos',
+    ];
 
     protected $dates = [
         'request_date',
         'sent_date',
-        'deadline_date',
         'adjudicated_date',
         'concluded_date',
         'invoice_date',
@@ -36,30 +37,21 @@ class BudgetRequest extends Model implements HasMedia
         'reference',
         'urgency_id',
         'client_id',
+        'billing_client_id',
         'request',
         'request_date',
-        'request_mode',
+        'reception_mode_id',
         'sent',
         'sent_date',
-        'sent_mode',
-        'deadline',
-        'deadline_date',
-        'deadline_mode',
         'adjudicated',
         'adjudicated_date',
-        'adjudicated_mode',
         'concluded',
         'concluded_date',
-        'concluded_mode',
         'invoice',
         'invoice_date',
-        'invoice_mode',
         'survey',
         'survey_date',
-        'survey_mode',
         'work_data_1',
-        'work_data_1_1',
-        'work_data_1_2',
         'work_data_2',
         'work_data_3',
         'work_data_4',
@@ -67,6 +59,7 @@ class BudgetRequest extends Model implements HasMedia
         'work_data_6',
         'work_data_7',
         'work_data_8',
+        'work_data_9',
         'address',
         'location_info',
         'info_id',
@@ -80,6 +73,11 @@ class BudgetRequest extends Model implements HasMedia
         'updated_at',
         'deleted_at',
     ];
+
+    protected function serializeDate(DateTimeInterface $date)
+    {
+        return $date->format('Y-m-d H:i:s');
+    }
 
     public function registerMediaConversions(Media $media = null): void
     {
@@ -97,6 +95,11 @@ class BudgetRequest extends Model implements HasMedia
         return $this->belongsTo(Client::class, 'client_id');
     }
 
+    public function billing_client()
+    {
+        return $this->belongsTo(Client::class, 'billing_client_id');
+    }
+
     public function getRequestDateAttribute($value)
     {
         return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
@@ -107,6 +110,11 @@ class BudgetRequest extends Model implements HasMedia
         $this->attributes['request_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
 
+    public function reception_mode()
+    {
+        return $this->belongsTo(ReceptionMode::class, 'reception_mode_id');
+    }
+
     public function getSentDateAttribute($value)
     {
         return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
@@ -115,16 +123,6 @@ class BudgetRequest extends Model implements HasMedia
     public function setSentDateAttribute($value)
     {
         $this->attributes['sent_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
-    }
-
-    public function getDeadlineDateAttribute($value)
-    {
-        return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
-    }
-
-    public function setDeadlineDateAttribute($value)
-    {
-        $this->attributes['deadline_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
 
     public function getAdjudicatedDateAttribute($value)
@@ -167,6 +165,18 @@ class BudgetRequest extends Model implements HasMedia
         $this->attributes['survey_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
 
+    public function getPhotosAttribute()
+    {
+        $files = $this->getMedia('photos');
+        $files->each(function ($item) {
+            $item->url       = $item->getUrl();
+            $item->thumbnail = $item->getUrl('thumb');
+            $item->preview   = $item->getUrl('preview');
+        });
+
+        return $files;
+    }
+
     public function info()
     {
         return $this->belongsTo(Info::class, 'info_id');
@@ -175,10 +185,5 @@ class BudgetRequest extends Model implements HasMedia
     public function surface_types()
     {
         return $this->belongsToMany(SurfaceType::class);
-    }
-
-    protected function serializeDate(DateTimeInterface $date)
-    {
-        return $date->format('Y-m-d H:i:s');
     }
 }

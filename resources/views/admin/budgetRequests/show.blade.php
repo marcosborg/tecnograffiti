@@ -15,11 +15,6 @@
                                 {{ trans('global.back_to_list') }}
                             </a>
                         </div>
-                        <div class="form-group">
-                            <a class="btn btn-default" href="{{ route('admin.budget-requests.pdf', [$budgetRequest->id]) }}">
-                                PDF
-                            </a>
-                        </div>
                         <table class="table table-bordered table-striped">
                             <tbody>
                                 <tr>
@@ -56,6 +51,14 @@
                                 </tr>
                                 <tr>
                                     <th>
+                                        {{ trans('cruds.budgetRequest.fields.billing_client') }}
+                                    </th>
+                                    <td>
+                                        {{ $budgetRequest->billing_client->name ?? '' }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
                                         {{ trans('cruds.budgetRequest.fields.request') }}
                                     </th>
                                     <td>
@@ -72,10 +75,10 @@
                                 </tr>
                                 <tr>
                                     <th>
-                                        {{ trans('cruds.budgetRequest.fields.request_mode') }}
+                                        {{ trans('cruds.budgetRequest.fields.reception_mode') }}
                                     </th>
                                     <td>
-                                        {{ $budgetRequest->request_mode }}
+                                        {{ $budgetRequest->reception_mode->name ?? '' }}
                                     </td>
                                 </tr>
                                 <tr>
@@ -96,38 +99,6 @@
                                 </tr>
                                 <tr>
                                     <th>
-                                        {{ trans('cruds.budgetRequest.fields.sent_mode') }}
-                                    </th>
-                                    <td>
-                                        {{ $budgetRequest->sent_mode }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.deadline') }}
-                                    </th>
-                                    <td>
-                                        <input type="checkbox" disabled="disabled" {{ $budgetRequest->deadline ? 'checked' : '' }}>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.deadline_date') }}
-                                    </th>
-                                    <td>
-                                        {{ $budgetRequest->deadline_date }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.deadline_mode') }}
-                                    </th>
-                                    <td>
-                                        {{ $budgetRequest->deadline_mode }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
                                         {{ trans('cruds.budgetRequest.fields.adjudicated') }}
                                     </th>
                                     <td>
@@ -140,14 +111,6 @@
                                     </th>
                                     <td>
                                         {{ $budgetRequest->adjudicated_date }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.adjudicated_mode') }}
-                                    </th>
-                                    <td>
-                                        {{ $budgetRequest->adjudicated_mode }}
                                     </td>
                                 </tr>
                                 <tr>
@@ -168,14 +131,6 @@
                                 </tr>
                                 <tr>
                                     <th>
-                                        {{ trans('cruds.budgetRequest.fields.concluded_mode') }}
-                                    </th>
-                                    <td>
-                                        {{ $budgetRequest->concluded_mode }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
                                         {{ trans('cruds.budgetRequest.fields.invoice') }}
                                     </th>
                                     <td>
@@ -188,14 +143,6 @@
                                     </th>
                                     <td>
                                         {{ $budgetRequest->invoice_date }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.invoice_mode') }}
-                                    </th>
-                                    <td>
-                                        {{ $budgetRequest->invoice_mode }}
                                     </td>
                                 </tr>
                                 <tr>
@@ -216,34 +163,10 @@
                                 </tr>
                                 <tr>
                                     <th>
-                                        {{ trans('cruds.budgetRequest.fields.survey_mode') }}
-                                    </th>
-                                    <td>
-                                        {{ $budgetRequest->survey_mode }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
                                         {{ trans('cruds.budgetRequest.fields.work_data_1') }}
                                     </th>
                                     <td>
                                         <input type="checkbox" disabled="disabled" {{ $budgetRequest->work_data_1 ? 'checked' : '' }}>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.work_data_1_1') }}
-                                    </th>
-                                    <td>
-                                        <input type="checkbox" disabled="disabled" {{ $budgetRequest->work_data_1_1 ? 'checked' : '' }}>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.work_data_1_2') }}
-                                    </th>
-                                    <td>
-                                        <input type="checkbox" disabled="disabled" {{ $budgetRequest->work_data_1_2 ? 'checked' : '' }}>
                                     </td>
                                 </tr>
                                 <tr>
@@ -300,6 +223,26 @@
                                     </th>
                                     <td>
                                         <input type="checkbox" disabled="disabled" {{ $budgetRequest->work_data_8 ? 'checked' : '' }}>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        {{ trans('cruds.budgetRequest.fields.work_data_9') }}
+                                    </th>
+                                    <td>
+                                        <input type="checkbox" disabled="disabled" {{ $budgetRequest->work_data_9 ? 'checked' : '' }}>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        {{ trans('cruds.budgetRequest.fields.photos') }}
+                                    </th>
+                                    <td>
+                                        @foreach($budgetRequest->photos as $key => $media)
+                                            <a href="{{ $media->getUrl() }}" target="_blank" style="display: inline-block">
+                                                <img src="{{ $media->getUrl('thumb') }}">
+                                            </a>
+                                        @endforeach
                                     </td>
                                 </tr>
                                 <tr>
