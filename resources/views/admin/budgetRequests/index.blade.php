@@ -37,118 +37,13 @@
                                         {{ trans('cruds.budgetRequest.fields.client') }}
                                     </th>
                                     <th>
-                                        {{ trans('cruds.client.fields.phone_1') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.client.fields.vat') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.client.fields.contact') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.client.fields.celphone') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.client.fields.email') }}
-                                    </th>
-                                    <th>
                                         {{ trans('cruds.budgetRequest.fields.billing_client') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.request') }}
                                     </th>
                                     <th>
                                         {{ trans('cruds.budgetRequest.fields.request_date') }}
                                     </th>
                                     <th>
-                                        {{ trans('cruds.budgetRequest.fields.reception_mode') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.sent') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.sent_date') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.adjudicated') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.adjudicated_date') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.concluded') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.concluded_date') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.invoice') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.invoice_date') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.survey') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.survey_date') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.work_data_1') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.work_data_2') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.work_data_3') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.work_data_4') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.work_data_5') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.work_data_6') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.work_data_7') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.work_data_8') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.work_data_9') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.photos') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.address') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.location_info') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.info') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.obs') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.surface_type') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.duration_hours') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.duration_days') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.duration_saturdays') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.budgetRequest.fields.duration_nights') }}
+                                        Fotografias
                                     </th>
                                     <th>
                                         &nbsp;
@@ -174,139 +69,17 @@
                                             {{ $budgetRequest->client->name ?? '' }}
                                         </td>
                                         <td>
-                                            {{ $budgetRequest->client->phone_1 ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $budgetRequest->client->vat ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $budgetRequest->client->contact ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $budgetRequest->client->celphone ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $budgetRequest->client->email ?? '' }}
-                                        </td>
-                                        <td>
                                             {{ $budgetRequest->billing_client->name ?? '' }}
-                                        </td>
-                                        <td>
-                                            <span style="display:none">{{ $budgetRequest->request ?? '' }}</span>
-                                            <input type="checkbox" disabled="disabled" {{ $budgetRequest->request ? 'checked' : '' }}>
                                         </td>
                                         <td>
                                             {{ $budgetRequest->request_date ?? '' }}
                                         </td>
                                         <td>
-                                            {{ $budgetRequest->reception_mode->name ?? '' }}
-                                        </td>
-                                        <td>
-                                            <span style="display:none">{{ $budgetRequest->sent ?? '' }}</span>
-                                            <input type="checkbox" disabled="disabled" {{ $budgetRequest->sent ? 'checked' : '' }}>
-                                        </td>
-                                        <td>
-                                            {{ $budgetRequest->sent_date ?? '' }}
-                                        </td>
-                                        <td>
-                                            <span style="display:none">{{ $budgetRequest->adjudicated ?? '' }}</span>
-                                            <input type="checkbox" disabled="disabled" {{ $budgetRequest->adjudicated ? 'checked' : '' }}>
-                                        </td>
-                                        <td>
-                                            {{ $budgetRequest->adjudicated_date ?? '' }}
-                                        </td>
-                                        <td>
-                                            <span style="display:none">{{ $budgetRequest->concluded ?? '' }}</span>
-                                            <input type="checkbox" disabled="disabled" {{ $budgetRequest->concluded ? 'checked' : '' }}>
-                                        </td>
-                                        <td>
-                                            {{ $budgetRequest->concluded_date ?? '' }}
-                                        </td>
-                                        <td>
-                                            <span style="display:none">{{ $budgetRequest->invoice ?? '' }}</span>
-                                            <input type="checkbox" disabled="disabled" {{ $budgetRequest->invoice ? 'checked' : '' }}>
-                                        </td>
-                                        <td>
-                                            {{ $budgetRequest->invoice_date ?? '' }}
-                                        </td>
-                                        <td>
-                                            <span style="display:none">{{ $budgetRequest->survey ?? '' }}</span>
-                                            <input type="checkbox" disabled="disabled" {{ $budgetRequest->survey ? 'checked' : '' }}>
-                                        </td>
-                                        <td>
-                                            {{ $budgetRequest->survey_date ?? '' }}
-                                        </td>
-                                        <td>
-                                            <span style="display:none">{{ $budgetRequest->work_data_1 ?? '' }}</span>
-                                            <input type="checkbox" disabled="disabled" {{ $budgetRequest->work_data_1 ? 'checked' : '' }}>
-                                        </td>
-                                        <td>
-                                            <span style="display:none">{{ $budgetRequest->work_data_2 ?? '' }}</span>
-                                            <input type="checkbox" disabled="disabled" {{ $budgetRequest->work_data_2 ? 'checked' : '' }}>
-                                        </td>
-                                        <td>
-                                            <span style="display:none">{{ $budgetRequest->work_data_3 ?? '' }}</span>
-                                            <input type="checkbox" disabled="disabled" {{ $budgetRequest->work_data_3 ? 'checked' : '' }}>
-                                        </td>
-                                        <td>
-                                            <span style="display:none">{{ $budgetRequest->work_data_4 ?? '' }}</span>
-                                            <input type="checkbox" disabled="disabled" {{ $budgetRequest->work_data_4 ? 'checked' : '' }}>
-                                        </td>
-                                        <td>
-                                            <span style="display:none">{{ $budgetRequest->work_data_5 ?? '' }}</span>
-                                            <input type="checkbox" disabled="disabled" {{ $budgetRequest->work_data_5 ? 'checked' : '' }}>
-                                        </td>
-                                        <td>
-                                            <span style="display:none">{{ $budgetRequest->work_data_6 ?? '' }}</span>
-                                            <input type="checkbox" disabled="disabled" {{ $budgetRequest->work_data_6 ? 'checked' : '' }}>
-                                        </td>
-                                        <td>
-                                            <span style="display:none">{{ $budgetRequest->work_data_7 ?? '' }}</span>
-                                            <input type="checkbox" disabled="disabled" {{ $budgetRequest->work_data_7 ? 'checked' : '' }}>
-                                        </td>
-                                        <td>
-                                            <span style="display:none">{{ $budgetRequest->work_data_8 ?? '' }}</span>
-                                            <input type="checkbox" disabled="disabled" {{ $budgetRequest->work_data_8 ? 'checked' : '' }}>
-                                        </td>
-                                        <td>
-                                            <span style="display:none">{{ $budgetRequest->work_data_9 ?? '' }}</span>
-                                            <input type="checkbox" disabled="disabled" {{ $budgetRequest->work_data_9 ? 'checked' : '' }}>
-                                        </td>
-                                        <td>
                                             @foreach($budgetRequest->photos as $key => $media)
                                                 <a href="{{ $media->getUrl() }}" target="_blank" style="display: inline-block">
-                                                    <img src="{{ $media->getUrl('thumb') }}">
+                                                    <img src="{{ $media->getUrl() }}" width="50">
                                                 </a>
                                             @endforeach
-                                        </td>
-                                        <td>
-                                            {{ $budgetRequest->address ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $budgetRequest->location_info ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $budgetRequest->info->name ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $budgetRequest->obs ?? '' }}
-                                        </td>
-                                        <td>
-                                            @foreach($budgetRequest->surface_types as $key => $item)
-                                                <span class="label label-info label-many">{{ $item->name }}</span>
-                                            @endforeach
-                                        </td>
-                                        <td>
-                                            {{ $budgetRequest->duration_hours ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $budgetRequest->duration_days ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $budgetRequest->duration_saturdays ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $budgetRequest->duration_nights ?? '' }}
                                         </td>
                                         <td>
                                             @can('budget_request_show')
