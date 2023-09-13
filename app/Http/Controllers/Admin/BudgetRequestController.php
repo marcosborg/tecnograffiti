@@ -17,6 +17,7 @@ use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class BudgetRequestController extends Controller
 {
@@ -29,6 +30,28 @@ class BudgetRequestController extends Controller
         $budgetRequests = BudgetRequest::with(['urgency', 'client', 'billing_client', 'reception_mode', 'info', 'surface_types', 'media'])->get();
 
         return view('admin.budgetRequests.index', compact('budgetRequests'));
+    }
+
+    public function pdf($budget_request_id)
+    {
+
+        $budgetRequest = BudgetRequest::find($budget_request_id)->load([
+            'client',
+            'billing_client',
+        ]);
+
+        $pdf = Pdf::loadView('admin.budgetRequests.pdf', [
+            'budgetRequest' => $budgetRequest,
+        ])->setOption([
+                'isRemoteEnabled' => true,
+                'enable_html5_parser' => true,
+            ]);
+
+        return view('admin.budgetRequests.pdf', compact('budgetRequest'));
+
+        //return $pdf->download($budgetRequest->created_at . '.pdf');
+
+        return $pdf->stream();
     }
 
     public function create()

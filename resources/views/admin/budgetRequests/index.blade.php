@@ -83,8 +83,8 @@
                                         </td>
                                         <td>
                                             @can('budget_request_show')
-                                                <a class="btn btn-xs btn-primary" href="{{ route('admin.budget-requests.show', $budgetRequest->id) }}">
-                                                    {{ trans('global.view') }}
+                                                <a class="btn btn-xs btn-primary" href="{{ route('admin.budget-requests.pdf', $budgetRequest->id) }}">
+                                                    PDF
                                                 </a>
                                             @endcan
 
