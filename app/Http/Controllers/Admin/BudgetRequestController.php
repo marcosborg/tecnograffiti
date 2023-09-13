@@ -35,9 +35,13 @@ class BudgetRequestController extends Controller
     public function pdf($budget_request_id)
     {
 
+        phpinfo();
+
         $budgetRequest = BudgetRequest::find($budget_request_id)->load([
-            'client',
+            'client.client_type',
             'billing_client',
+            'urgency',
+            'surface_types'
         ]);
 
         $pdf = Pdf::loadView('admin.budgetRequests.pdf', [
