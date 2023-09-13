@@ -32,11 +32,8 @@ class BudgetRequestController extends Controller
         return view('admin.budgetRequests.index', compact('budgetRequests'));
     }
 
-    public function pdf($budget_request_id)
+    public function pdf($budget_request_id, $download = false)
     {
-
-        phpinfo();
-
         $budgetRequest = BudgetRequest::find($budget_request_id)->load([
             'client.client_type',
             'billing_client',
@@ -47,15 +44,18 @@ class BudgetRequestController extends Controller
         $pdf = Pdf::loadView('admin.budgetRequests.pdf', [
             'budgetRequest' => $budgetRequest,
         ])->setOption([
-                'isRemoteEnabled' => true,
-                'enable_html5_parser' => true,
-            ]);
+                    'isRemoteEnabled' => true,
+                    'enable_html5_parser' => true,
+                ]);
 
-        return view('admin.budgetRequests.pdf', compact('budgetRequest'));
+        //return view('admin.budgetRequests.pdf', compact('budgetRequest'));
 
-        //return $pdf->download($budgetRequest->created_at . '.pdf');
+        if ($download == false) {
+            return $pdf->stream();
+        } else {
+            return $pdf->download($budgetRequest->created_at . '.pdf');
+        }
 
-        return $pdf->stream();
     }
 
     public function create()
@@ -119,14 +119,14 @@ class BudgetRequestController extends Controller
         $budgetRequest->surface_types()->sync($request->input('surface_types', []));
         if (count($budgetRequest->photos) > 0) {
             foreach ($budgetRequest->photos as $media) {
-                if (! in_array($media->file_name, $request->input('photos', []))) {
+                if (!in_array($media->file_name, $request->input('photos', []))) {
                     $media->delete();
                 }
             }
         }
         $media = $budgetRequest->photos->pluck('file_name')->toArray();
         foreach ($request->input('photos', []) as $file) {
-            if (count($media) === 0 || ! in_array($file, $media)) {
+            if (count($media) === 0 || !in_array($file, $media)) {
                 $budgetRequest->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('photos');
             }
         }
@@ -167,10 +167,10 @@ class BudgetRequestController extends Controller
     {
         abort_if(Gate::denies('budget_request_create') && Gate::denies('budget_request_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $model         = new BudgetRequest();
-        $model->id     = $request->input('crud_id', 0);
+        $model = new BudgetRequest();
+        $model->id = $request->input('crud_id', 0);
         $model->exists = true;
-        $media         = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
+        $media = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
 
         return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
     }

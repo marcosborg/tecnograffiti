@@ -215,30 +215,92 @@
                             <th>TIPOS DE SUPERFÍCIE</th>
                         </tr>
                         @foreach ($budgetRequest->surface_types as $surface_type)
-                            <tr>
-                                <td>{{ $surface_type->name }}</td>
-                            </tr>
+                        <tr>
+                            <td>{{ $surface_type->name }}</td>
+                        </tr>
                         @endforeach
                     </tbody>
                 </table>
             </td>
         </tr>
     </table>
+    <p><strong>FOTOGRAFIAS</strong></p>
+    <table style="width: 100%">
+        <tr>
+            @foreach ($budgetRequest->photos as $photo)
+            <td>
+                <img src="{{ $photo->getUrl() }}" style="width: 100%; max-width: 200px;">
+            </td>
+            @endforeach
+        </tr>
+    </table>
     <table style="width: 100%;">
-        <thead>
-            <tr>
-                <th>FOTOGRAFIAS</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    @foreach ($budgetRequest->photos as $photo)
-                        <img src="{{ $photo->getUrl() }}" style="width: 200px;">
-                    @endforeach
-                </td>
-            </tr>
-        </tbody>
+        <tr>
+            <td style="width: 50%;">
+                <table style="width: 100%;">
+                    <tr>
+                        <td>
+                            <strong>Morada do Local (Para prestação do serviço)</strong><br>
+                            {{ $budgetRequest->address }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Outras Referências de Localização</strong><br>
+                            {{ $budgetRequest->location_info }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>N/ Conhecimento através de</strong><br>
+                            {{ $budgetRequest->info->name }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Outras observações</strong><br>
+                            {{ $budgetRequest->obs }}
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td style="width: 50%;">
+                <table style="width: 100%;">
+                    <tr>
+                        <td>
+                            <strong>Horas previstas</strong><br>
+                            {{ $budgetRequest->duration_hours }} hora{{ $budgetRequest->duration_hours > 1 && $budgetRequest->duration_hours != 0 ? 's' : '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Dias previstos</strong><br>
+                            {{ $budgetRequest->duration_days }} dia{{ $budgetRequest->duration_days > 1 && $budgetRequest->duration_days != 0 ? 's' : '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Sábados previstos</strong><br>
+                            {{ $budgetRequest->duration_saturdays }} sábado{{ $budgetRequest->duration_saturdays > 1 && $budgetRequest->duration_saturdays != 0 ? 's' : '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Noites previstas</strong><br>
+                            {{ $budgetRequest->duration_nights }} noite{{ $budgetRequest->duration_nights > 1 && $budgetRequest->duration_nights != 0 ? 's' : '' }}
+                        </td>
+                    </tr>
+                </table>                
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td>
+                <strong>Observações</strong><br>
+                {!! $budgetRequest->other_information !!}
+            </td>
+        </tr>
     </table>
     <footer>
         Tecnograffiti - PO © Rua Bartolomeu Dias 15 A/B, Edifício EDIPAD - Armazém C1 - 2695-718 São João da
@@ -246,6 +308,3 @@
         <?php echo date("Y");?>
     </footer>
 </body>
-<script>
-    console.log({!! $budgetRequest !!})
-</script>

@@ -84,7 +84,10 @@
                                         <td>
                                             @can('budget_request_show')
                                                 <a class="btn btn-xs btn-primary" href="{{ route('admin.budget-requests.pdf', $budgetRequest->id) }}">
-                                                    PDF
+                                                    Ver PDF
+                                                </a>
+                                                <a class="btn btn-xs btn-primary" href="/admin/budget-requests/pdf/{{ $budgetRequest->id }}/1">
+                                                    Download PDF
                                                 </a>
                                             @endcan
 

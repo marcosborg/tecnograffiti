@@ -51,7 +51,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('budget-requests/media', 'BudgetRequestController@storeMedia')->name('budget-requests.storeMedia');
     Route::post('budget-requests/ckmedia', 'BudgetRequestController@storeCKEditorImages')->name('budget-requests.storeCKEditorImages');
     Route::resource('budget-requests', 'BudgetRequestController');
-    Route::get('budget-requests/pdf/{budget_request_id}', 'BudgetRequestController@pdf')->name('budget-requests.pdf');
+    Route::get('budget-requests/pdf/{budget_request_id}/{download?}', 'BudgetRequestController@pdf')->name('budget-requests.pdf');
 
     // Client Type
     Route::delete('client-types/destroy', 'ClientTypeController@massDestroy')->name('client-types.massDestroy');
