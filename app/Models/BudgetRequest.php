@@ -170,8 +170,8 @@ class BudgetRequest extends Model implements HasMedia
         $files = $this->getMedia('photos');
         $files->each(function ($item) {
             $item->url       = $item->getUrl();
-            $item->thumbnail = $item->getUrl('thumb');
-            $item->preview   = $item->getUrl('preview');
+            //$item->thumbnail = $item->getUrl('thumb');
+            //$item->preview   = $item->getUrl('preview');
         });
 
         return $files;
