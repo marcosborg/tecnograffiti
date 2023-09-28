@@ -224,16 +224,6 @@
             </td>
         </tr>
     </table>
-    <p><strong>FOTOGRAFIAS</strong></p>
-    <table style="width: 100%">
-        <tr>
-            @foreach ($budgetRequest->photos as $photo)
-            <td>
-                <img src="{{ $photo->getUrl() }}" style="width: 100%; max-width: 200px;">
-            </td>
-            @endforeach
-        </tr>
-    </table>
     <table style="width: 100%;">
         <tr>
             <td style="width: 50%;">
@@ -269,28 +259,32 @@
                     <tr>
                         <td>
                             <strong>Horas previstas</strong><br>
-                            {{ $budgetRequest->duration_hours }} hora{{ $budgetRequest->duration_hours > 1 && $budgetRequest->duration_hours != 0 ? 's' : '' }}
+                            {{ $budgetRequest->duration_hours }} hora{{ $budgetRequest->duration_hours > 1 &&
+                            $budgetRequest->duration_hours != 0 ? 's' : '' }}
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <strong>Dias previstos</strong><br>
-                            {{ $budgetRequest->duration_days }} dia{{ $budgetRequest->duration_days > 1 && $budgetRequest->duration_days != 0 ? 's' : '' }}
+                            {{ $budgetRequest->duration_days }} dia{{ $budgetRequest->duration_days > 1 &&
+                            $budgetRequest->duration_days != 0 ? 's' : '' }}
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <strong>Sábados previstos</strong><br>
-                            {{ $budgetRequest->duration_saturdays }} sábado{{ $budgetRequest->duration_saturdays > 1 && $budgetRequest->duration_saturdays != 0 ? 's' : '' }}
+                            {{ $budgetRequest->duration_saturdays }} sábado{{ $budgetRequest->duration_saturdays > 1 &&
+                            $budgetRequest->duration_saturdays != 0 ? 's' : '' }}
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <strong>Noites previstas</strong><br>
-                            {{ $budgetRequest->duration_nights }} noite{{ $budgetRequest->duration_nights > 1 && $budgetRequest->duration_nights != 0 ? 's' : '' }}
+                            {{ $budgetRequest->duration_nights }} noite{{ $budgetRequest->duration_nights > 1 &&
+                            $budgetRequest->duration_nights != 0 ? 's' : '' }}
                         </td>
                     </tr>
-                </table>                
+                </table>
             </td>
         </tr>
     </table>
@@ -299,6 +293,25 @@
             <td>
                 <strong>Observações</strong><br>
                 {!! $budgetRequest->other_information !!}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p><strong>FOTOGRAFIAS</strong></p>
+                @php
+                $groups = array_chunk($budgetRequest->photos->toArray(), 3);
+                @endphp
+                <table style="width: 100%">
+                    @foreach ($groups as $group)
+                    <tr>
+                        @foreach ($group as $photo)
+                        <td>
+                            <img src="{{ $photo['original_url'] }}" style="width: 100%;">
+                        </td>
+                        @endforeach
+                    </tr>
+                    @endforeach
+                </table>
             </td>
         </tr>
     </table>
