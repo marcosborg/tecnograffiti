@@ -81,8 +81,8 @@ class BudgetRequest extends Model implements HasMedia
 
     public function registerMediaConversions(Media $media = null): void
     {
-        $this->addMediaConversion('thumb')->fit('crop', 50, 50);
-        $this->addMediaConversion('preview')->fit('crop', 120, 120);
+        //$this->addMediaConversion('thumb')->fit('crop', 50, 50);
+        //$this->addMediaConversion('preview')->fit('crop', 120, 120);
     }
 
     public function urgency()
